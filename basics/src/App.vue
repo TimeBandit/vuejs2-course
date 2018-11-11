@@ -1,27 +1,54 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <p class="title">{{sayHello()}}</p>
+    <h1 v-once>
+      {{name}}
+    </h1>
+    <p class="title">
+      {{newTitle}}
+      <a :href="link" target="_blank">Goto Google</a>
+    </p>
+    <p v-html="fininshedLink">
+    </p>
+    <div>
+      <h2>Module 8 Assignment</h2>
+      <p> VueJS is pretty cool - {{name}} ({{age}})</p>
+      <p>{{getAge()}}</p>
+      <p>{{randomNumber()}}</p>
+      <a :href="gitHubLink">My Github Profile</a>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "app",
   data: function() {
     return {
-      name: "Imran"
+      name: "Imran",
+      age: 4,
+      link: "http://google.com",
+      fininshedLink: '<a href="http://google.com">Google</a>',
+      gitHubLink: "https://github.com/TimeBandit"
     };
   },
-  // components: {
-  //   HelloWorld
-  // },
   methods: {
     sayHello() {
-      return `Hello ${this.name}`;
+      this.name = "Imran is nowhere to be seen";
+      return `Hello ${this.name}: `;
+    },
+    randomNumber() {
+      const rnd = Math.random().toFixed(2) * 100;
+      return Math.ceil(rnd);
+    },
+    getAge() {
+      return this.age * 3;
+    }
+  },
+  computed: {
+    newTitle: function() {
+      return `${this.name} is nowhere to be seen`;
     }
   }
 };
