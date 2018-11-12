@@ -26,24 +26,24 @@ export default {
   name: "app",
   data: function() {
     return {
-      counte
-      x:0,
-      y:0
+      counter: 0,
+      x: 0,
+      y: 0
     };
   },
-  methods: {  name: "app",
-    increase(step, event){
+  methods: {
+    increase(step, event) {
       event;
-      this.counter+=step;
+      this.counter += step;
     },
-    updateCoors(event){
-      this.x = event.clientX,
-      this.y = event.clientY
+    updateCoors(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
     },
-    alertMe(event){
+    alertMe(event) {
       alert(event.target.value);
     }
-  },
+  }
 };
 </script>
 
