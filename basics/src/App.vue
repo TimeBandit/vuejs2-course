@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <h1 v-once>
-      {{name}}
-    </h1>
-    <p class="title">
-      {{newTitle}}
-      <a :href="link" target="_blank">Goto Google</a>
+    <p >Counter is at: {{counter}}</p>
+    <button v-on:click="increase(2, $event)">Increase Count</button>
+    <p v-on:mousemove="updateCoors">
+      Propogation is stopped when hovering over DEAD
+      <br>
+      Coordinate: {{x}} / {{y}}
+      - <span v-on:mousemove.stop="">DEAD</span>
     </p>
-    <p v-html="fininshedLink">
+    <p>
+      Using key modifiers: You can chain them .keyup.enter.space
+      <input type="text" v-on:keyup.enter.space="alertMe">
     </p>
-    <div>
-      <h2>Module 8 Assignment</h2>
-      <p> VueJS is pretty cool - {{name}} ({{age}})</p>
-      <p>{{getAge()}}</p>
-      <p>{{randomNumber()}}</p>
-      <a :href="gitHubLink">My Github Profile</a>
-    </div>
+    <p>
+      Using Computed Properties
+      
+    </p>
   </div>
 </template>
 
@@ -26,31 +26,24 @@ export default {
   name: "app",
   data: function() {
     return {
-      name: "Imran",
-      age: 4,
-      link: "http://google.com",
-      fininshedLink: '<a href="http://google.com">Google</a>',
-      gitHubLink: "https://github.com/TimeBandit"
+      counte
+      x:0,
+      y:0
     };
   },
-  methods: {
-    sayHello() {
-      this.name = "Imran is nowhere to be seen";
-      return `Hello ${this.name}: `;
+  methods: {  name: "app",
+    increase(step, event){
+      event;
+      this.counter+=step;
     },
-    randomNumber() {
-      const rnd = Math.random().toFixed(2) * 100;
-      return Math.ceil(rnd);
+    updateCoors(event){
+      this.x = event.clientX,
+      this.y = event.clientY
     },
-    getAge() {
-      return this.age * 3;
+    alertMe(event){
+      alert(event.target.value);
     }
   },
-  computed: {
-    newTitle: function() {
-      return `${this.name} is nowhere to be seen`;
-    }
-  }
 };
 </script>
 
