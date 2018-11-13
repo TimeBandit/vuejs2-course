@@ -1,4 +1,4 @@
-console.log("running...");
+console.log("running......");
 
 const vm = new Vue({
 	el: "#app",
