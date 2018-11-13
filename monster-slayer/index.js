@@ -5,6 +5,10 @@ const vm = new Vue({
   data:{
     gameStarted: false,
   },
-  methods:{},
+  methods:{
+    resetGame: function(){
+      this.gameStarted = false;
+    }
+  },
   computed:{},
 })
