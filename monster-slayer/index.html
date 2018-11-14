@@ -14,10 +14,10 @@
 					<div class="healthbar">
 						<div
 							class="healthbar text-center"
-							:style="{width :youScore + '%'}"
+							:style="{width :playerScore + '%'}"
 							style="background-color: green; margin: 0; color: white;"
 						>
-							{{ youScore }}
+							{{ playerScore }}
 						</div>
 					</div>
 				</div>
@@ -50,7 +50,9 @@
 			<section class="row log">
 				<div class="small-12 columns">
 					<ul>
-						<li></li>
+						<li v-for="(log, index) in logs" :key="index" v-bind:class="[log.isPlayer ? 'monster-turn' : 'player-turn']">
+							{{ log.message }}
+						</li>
 					</ul>
 				</div>
 			</section>
