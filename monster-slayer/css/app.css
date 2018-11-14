@@ -1,94 +1,176 @@
 .text-center {
-    text-align: center;
+	text-align: center;
 }
 
 .healthbar {
-    width: 80%;
-    height: 40px;
-    background-color: #eee;
-    margin: auto;
-    transition: width 500ms;
+	width: 80%;
+	height: 40px;
+	background-color: #eee;
+	margin: auto;
+	transition: width 500ms;
 }
 
-.controls, .log {
-    margin-top: 30px;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 3px 6px #ccc;
+.controls,
+.log {
+	margin-top: 30px;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid #ccc;
+	box-shadow: 0px 3px 6px #ccc;
 }
 
 .turn {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 22px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .log ul {
-    list-style: none;
-    font-weight: bold;
-    text-transform: uppercase;
+	list-style: none;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .log ul li {
-    margin: 5px;
+	margin: 5px;
 }
 
 .log ul .player-turn {
-    color: blue;
-    background-color: #e4e8ff;
+	color: blue;
+	background-color: #e4e8ff;
 }
 
 .log ul .monster-turn {
-    color: red;
-    background-color: #ffc0c1;
+	color: red;
+	background-color: #ffc0c1;
 }
 
 button {
-    font-size: 20px;
-    background-color: #eee;
-    padding: 12px;
-    box-shadow: 0 1px 1px black;
-    margin: 10px;
+	font-size: 20px;
+	background-color: #eee;
+	padding: 12px;
+	box-shadow: 0 1px 1px black;
+	margin: 10px;
 }
 
 #start-game {
-    background-color: #aaffb0;
+	background-color: #aaffb0;
 }
 
 #start-game:hover {
-    background-color: #76ff7e;
+	background-color: #76ff7e;
 }
 
 #attack {
-    background-color: #ff7367;
+	background-color: #ff7367;
 }
 
 #attack:hover {
-    background-color: #ff3f43;
+	background-color: #ff3f43;
 }
 
 #special-attack {
-    background-color: #ffaf4f;
+	background-color: #ffaf4f;
 }
 
 #special-attack:hover {
-    background-color: #ff9a2b;
+	background-color: #ff9a2b;
 }
 
 #heal {
-    background-color: #aaffb0;
+	background-color: #aaffb0;
 }
 
 #heal:hover {
-    background-color: #76ff7e;
+	background-color: #76ff7e;
 }
 
 #give-up {
-    background-color: #ffffff;
+	background-color: #ffffff;
 }
 
 #give-up:hover {
-    background-color: #c7c7c7;
+	background-color: #c7c7c7;
+}
+
+/* modal styles */
+#myImg:hover {
+	opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #ccc;
+	padding: 10px 0;
+	height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content,
+#caption {
+	animation-name: zoom;
+	animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+/* The Close Button */
+.close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+	.modal-content {
+		width: 100%;
+	}
 }
