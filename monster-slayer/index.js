@@ -6,7 +6,12 @@ const vm = new Vue({
 		gameStarted: false,
 		playerScore: 100,
 		monsterScore: 100,
-		logs: []
+		logs: [],
+		modal:{
+			display: 'none',
+			winner:'',
+			imgHref: ''
+		}
 	},
 	methods: {
 		startGame: function() {
@@ -75,14 +80,31 @@ const vm = new Vue({
 	watch: {
 		playerScore: function(val) {
 			if (val === 0) {
-				window.alert("Monster Won 👾");
-				this.resetGame();
+				setTimeout(()=>{
+					// window.alert("Monster Won 👾");
+					this.resetGame();
+					// set the player name
+					this.modal.winner='Monster'
+					// set the imgurl
+					this.modal.imgHref='/public/img/monster.jpeg'
+					// display the modal
+					this.modal.display='block'
+				},700)
+
 			}
 		},
 		monsterScore: function(val) {
 			if (val === 0) {
-				window.alert("Player Won 🏃");
-				this.resetGame();
+				setTimeout(()=>{
+					// window.alert("Player Won 🏃");
+					this.resetGame();
+					// set the player name
+					this.modal.winner='Player'
+					// set the imgurl
+					this.modal.imgHref='/public/img/player.jpeg'
+					// display the modal
+					this.modal.display='block'
+				},700)
 			}
 		}
 	},

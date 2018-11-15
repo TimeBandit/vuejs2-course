@@ -61,13 +61,13 @@
 				</div>
 			</section>
 			<!-- The Modal -->
-			<div id="myModal" class="modal">
+			<div id="myModal" class="modal" :style="{display: modal.display}">
 				<!-- The Close Button -->
-				<span class="close">&times;</span>
+				<span class="close" @click="modal.display='none'">&times;</span>
 				<!-- Modal Content (The Image) -->
-				<img class="modal-content" id="img01" />
+				<img class="modal-content" id="img01" :src="modal.imgHref"/>
 				<!-- Modal Caption (Image Text) -->
-				<div id="caption"></div>
+				<div id="caption">{{modal.winner}} Won!</div>
 			</div>
 		</div>
 		<script src="index.js"></script>
