@@ -1,7 +1,14 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+// a newer way of mounting
+const vm = new Vue({
+  ...App
+});
+
+vm.$mount("#app");
+
+// new Vue({
+//   el: '#app',
+//   render: h => h(App)
+// })
