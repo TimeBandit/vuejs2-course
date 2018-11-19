@@ -1,5 +1,8 @@
 <template>
-  <h1>Hello</h1>
+	<div>
+		<h1>Hello {{msg}}</h1>
+		<app-servers/>
+	</div>
 </template>
 
 <script>
@@ -7,13 +10,13 @@ export default {
 	name: "app",
 	data() {
 		return {
-			msg: "Welcome to the start of my software career 🌠"
+			msg: "welcome to the start of my day 🌠"
 		};
 	}
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
 	font-family: "Avenir", Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
