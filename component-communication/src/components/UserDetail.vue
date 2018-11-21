@@ -3,13 +3,14 @@
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
         <p>User Name: {{ myName }}</p>
-        <p>User Age: {{ userAge }}</p>
+        <p>User Age: {{ age }}</p>
         <button @click="resetName">Reset Name</button>
         <button @click="resetFn()">Reset Callback</button>
     </div>
 </template>
 
 <script>
+    import { eventBus } from "../main";
     export default{
         // props: ['myName'], this is unvalidted
         props:{
@@ -35,6 +36,20 @@
                 // emit a custom event to let parent know that the value has changed
                 this.$emit('nameWasReset', this.myName);
             }
+        },
+        data:function(){
+            return {
+                    age: this.userAge
+                };
+        },
+        created(){
+            // setup listener to the new event bus
+            // register the listener
+            const self=this;
+            eventBus.$on('ageEdited',function(newAge){
+                console.log('ageEdited triggered', newAge);
+                self.age = newAge;
+            });
         }
     }
 </script>
