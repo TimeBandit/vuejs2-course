@@ -10,26 +10,29 @@
 </template>
 
 <script>
-import { eventBus } from '../../main.js';
+import { eventBus } from "../../main.js";
 export default {
-  props:['appServer'],
-  data: function(){
-    return {
-      server: this.appServer
-    }
-  },
-  methods: {
-    selected: function(){
-      console.log('clicked');
-      eventBus.$emit('serverSelected', this.server);
-    }
-  }
-}
+	props: ["appServer"],
+	data: function() {
+		return {
+			server: this.appServer
+		};
+	},
+	methods: {
+		selected: function() {
+			console.log("clicked");
+			eventBus.$emit("serverSelected", this.server);
+		}
+	}
+};
 </script>
 
 <style scoped>
-  .server {
-    display: flex;
-    justify-content: space-between;
-  }
+.server {
+	display: flex;
+	justify-content: space-between;
+}
+.server-number {
+	color: aliceblue;
+}
 </style>
