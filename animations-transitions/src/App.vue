@@ -52,6 +52,8 @@
         <button class="btn-btn-primary" @click="load = !load">Load / Remove Element</button>
         <br>
         <br>
+        <!-- enter and leave are the place for the animation sode  -->
+        <!-- the place to enter the animation is before enter and before leave -->
         <transition
           @before-enter="beforeEnter"
           @enter="enter"
@@ -61,8 +63,10 @@
           @leave="leave"
           @after-leave="afterLeave"
           @leave-cancelled="leaveCancelled"
+          :css="false"
         >
-          <div style="width: 100px; height: 100px; background-color: lightgreen" v-if="load"></div>
+          <!-- 👇 tell vue that there wont be any css classes attached so skip the step -->
+          <div style="width:300px; height: 100px; background-color: lightgreen" v-if="load"></div>
         </transition>
       </div>
     </div>
@@ -75,19 +79,31 @@ export default {
     return {
       show: false,
       alertAnimation: "slide",
-      load: true
+      load: true,
+      elementWidth: 100
     };
   },
   methods: {
     beforeEnter(el) {
       console.log("beforeEnter");
+      this.elementWidth = 0;
+      el.style.width = this.elementWidth;
     },
     enter(el, done) {
       console.log("enter");
       // done is used to tell vuejs when the animation has finished
       // it's most useful when you have ansyn code, othewise if you added css animation vue
       // will know when the timing is supposed to end
-      done();
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = this.elementWidth + round * 10 + "px";
+        round++;
+        console.log(el.style.width);
+        if (parseInt(el.style.width) >= 300) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterEnter(el) {
       console.log("after enter");
@@ -97,10 +113,22 @@ export default {
     },
     beforeLeave(el) {
       console.log("beforeLeave");
+      this.elementWidth = 300;
+      el.style.width = this.elementWidth + "px";
     },
     leave(el, done) {
       console.log("leave");
-      done();
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = this.elementWidth - round * 10 + "px";
+        console.log(el.style.width);
+
+        round++;
+        if (parseInt(el.style.width) <= 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
     },
     afterLeave(el) {
       console.log("afterLeave");
