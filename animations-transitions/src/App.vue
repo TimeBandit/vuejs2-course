@@ -68,22 +68,64 @@
           <!-- 👇 tell vue that there wont be any css classes attached so skip the step -->
           <div style="width:300px; height: 100px; background-color: lightgreen" v-if="load"></div>
         </transition>
+        <hr>
+        <!-- Dynamic components -->
+        <button class="btn btn-primary" @click="toggle">Switch Dynamic Components</button>
+        <br>
+        <br>
+        <transition name="fade" mode="out-in">
+          <component :is="selectedComponents"></component>
+        </transition>
+        <!-- transition group is like transition but for multiple items -->
+        <!-- transition is not rendered to the dom, transition-group does render -->
+        <!-- a new html tag, this can be overwritten with tag="TAG" -->
+        <ul class="list-group">
+          <button class="btn btn-primary" @click="addItem">Add Item</button>
+          <br>
+          <br>
+          <transition-group name="fade">
+            <li class="list-group-item" v-for="(item, index) in numbers" :key="item">
+              <span class="remove" @click="removeItem(index)">&times;</span>
+              {{item}}
+            </li>
+          </transition-group>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DangerAlert from "./DangerAlert.vue";
+import SuccessAlert from "./SuccessAlert.vue";
 export default {
   data() {
     return {
       show: false,
       alertAnimation: "slide",
       load: true,
-      elementWidth: 100
+      elementWidth: 100,
+      selectedComponents: "app-success-alert",
+      numbers: [1, 2, 3, 4, 5]
     };
   },
   methods: {
+    toggle() {
+      if (this.selectedComponents === "app-success-alert") {
+        this.selectedComponents = "app-danger-alert";
+      } else {
+        this.selectedComponents = "app-success-alert";
+      }
+    },
+    removeItem(idx) {
+      this.numbers.splice(idx, 1);
+      console.log(idx);
+    },
+    addItem() {
+      const pos = Math.floor(Math.random() * this.numbers.length); // generate an index
+      console.log(pos);
+      this.numbers.splice(pos, 0, Math.max(...this.numbers) + 1);
+    },
     beforeEnter(el) {
       console.log("beforeEnter");
       this.elementWidth = 0;
@@ -136,6 +178,10 @@ export default {
     leaveCancelled(el) {
       console.log("leaveCancelled");
     }
+  },
+  components: {
+    appDangerAlert: DangerAlert,
+    appSuccessAlert: SuccessAlert
   }
 };
 </script>
@@ -146,11 +192,23 @@ export default {
   --animation-length: 3s;
 }
 
+.list-group-item {
+  position: relative;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
 /* this is removed after one frame */
 .fade-enter {
   opacity: 0;
   transform: scale(0.5);
-  transform: translateX(-150px);
 }
 
 /* its important only to setup 3sthe transion here */
@@ -165,8 +223,14 @@ export default {
     background-color var(--animation-length);
   opacity: 0;
   transform: scale(0.5);
-  transform: translateX(150px);
   background-color: brown;
+  /* 👇 means that the rest of the list can move above  it as it's leaving*/
+  position: absolute;
+}
+
+.fade-move {
+  /* you only get the move class with transition group for elements that change their places */
+  transition: transform 1s;
 }
 
 /* using css animations */
