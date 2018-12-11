@@ -10,4 +10,5 @@ custom-directives/node_modules
 filters-mixins/node_modules
 filters-mixins/assignment/node_modules
 animations-transitions/node_modules
+animations-transitions/assignment/math-quiz/node_modules
 package-lock.json
