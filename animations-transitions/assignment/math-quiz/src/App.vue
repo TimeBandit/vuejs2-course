@@ -6,16 +6,8 @@
           <h1>The Super Quiz</h1>
         </header>
         <div class="quiz__content">
-          <!-- <component :is="question"></component> -->
-          <div class="card" v-if="newQuestion">
-            <header class="card__header">{{question}}</header>
-            <div class="card__body">
-              <div class="answers">
-                <button class="answers__answer" v-for="(item) in answers" :key="item">{{item}}</button>
-              </div>
-            </div>
-          </div>
-          <div v-else>test</div>
+          <component :is="activeComponent" v-on:guess="onGuess"></component>
+          <!-- <div v-else>Congratulations 🎉</div> -->
         </div>
       </div>
     </div>
@@ -23,39 +15,25 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Question from "./components/Question";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    appQuestion: Question
   },
   data() {
     return {
-      answers: [1, 2, 3, 4],
-      newQuestion: true,
-      parameters: { one: null, two: null }
+      answered: false,
+      activeComponent: "app-question"
     };
   },
   methods: {
-    makeParameters() {
-      const randNum = () => Math.ceil(Math.random(100) * 100);
-      this.parameters = { one: randNum(), two: randNum() };
+    onGuess(isCorrect) {
+      console.log(isCorrect);
     }
   },
-  computed: {
-    result() {
-      const { one, two } = this.parameters;
-      return one + two;
-    },
-    question() {
-      const { one, two } = this.parameters;
-      return `What is ${one} + ${two}`;
-    }
-  },
-  created() {
-    this.makeParameters();
-  }
+  computed: {}
 };
 </script>
 
