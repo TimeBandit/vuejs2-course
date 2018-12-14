@@ -24,6 +24,7 @@ export default {
     };
   },
   methods: {
+    // TODO ensure that random data exclued the correct answer
     makeNewQuiz() {
       // change the quiz type
       this.type = this.type === "addition" ? "subtraction" : "addition";
