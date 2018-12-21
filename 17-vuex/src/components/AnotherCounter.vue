@@ -1,9 +1,10 @@
 <template>
   <div>
     <p>Incrementing/Decrementing through mutations</p>
-    <button class="btn btn-primary" @click="increment">Increment</button>
-    <button class="btn btn-primary" @click="decrement">Decrement</button>
-    <p>Async Incrementing/Decrementing through mutations</p>
+    <button class="btn btn-primary" @click="increment(100)">Increment</button>
+    <button class="btn btn-primary" @click="decrement(100)">Decrement</button>
+    <p>Async Incrementing/Decrementing through the dispatching of actions</p>
+    <!-- cant pass more than one argument to an action, instead pass an object -->
     <button class="btn btn-primary" @click="asyncIncrement">Async Increment</button>
     <button class="btn btn-primary" @click="asyncDecrement">Async Decrement</button>
   </div>

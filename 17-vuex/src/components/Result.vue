@@ -21,6 +21,7 @@ export default {
   // clicks() {
   //   return this.$store.getters.stringCounter;
   // }
+
   // to save yourself listing all the getter manually use 'mapgetters
 
   // can also pass an object and map getters to different names

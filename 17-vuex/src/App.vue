@@ -26,6 +26,21 @@ export default {
   //     counter: 0
   //   };
   // },
+
+  /* 
+computed properties can also be converted to get/setters by swapping the function
+with an object. this means you can use vmodel it's not used very often but one use
+case is to use it with when the property is bound to the store
+{
+  get(){
+    return this.$store.getters.value
+  }
+  set(){
+    this.$store.dispatch('action name')
+  }
+}
+*/
+
   components: {
     appCounter: Counter,
     appAnotherCounter: AnotherCounter,
@@ -33,4 +48,3 @@ export default {
   }
 };
 </script>
-
