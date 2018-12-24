@@ -9,12 +9,17 @@
 export default {
   methods: {
     // update the store instead of emitting an event
+    // accessing state directly isnt scalable
     increment() {
-      this.$store.state.counter++;
+      // 👇 the form changes when you switch to modules
+      this.$store.state.c.counter++;
+      // this.$store.state.counter++;
       // this.$emit('updated', 1);
     },
     decrement() {
-      this.$store.state.counter--;
+      this.$store.state.c.counter--;
+
+      // this.$store.state.counter--;
       // this.$emit('updated', -1);
     }
   }

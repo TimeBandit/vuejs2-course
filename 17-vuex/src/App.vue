@@ -7,6 +7,8 @@
         <app-result></app-result>
         <hr>
         <!-- <app-counter @updated="counter += $event"></app-counter> -->
+        <input type="text" v-model="value">
+        <hr>
         <app-counter></app-counter>
         <hr>
         <app-another-counter></app-another-counter>
@@ -40,7 +42,17 @@ case is to use it with when the property is bound to the store
   }
 }
 */
-
+  computed: {
+    // this is a non statndard way of doing things
+    value: {
+      get() {
+        return this.$store.getters.value;
+      },
+      set(value) {
+        this.$store.dispatch("updateValue", value);
+      }
+    }
+  },
   components: {
     appCounter: Counter,
     appAnotherCounter: AnotherCounter,

@@ -7,6 +7,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import * as types from "../store/types.js";
 export default {
   // use a computed property to fetch the store values
   // instead of passing a prop
@@ -31,8 +32,14 @@ export default {
   // solution
   computed: {
     // for the spread operate we need stage-2 presets to be installed
-    ...mapGetters(["doubleCounter", "stringCounter"])
+    // ...mapGetters(["doubleCounter", "stringCounter"])
     // add your own computed properties
+
+    // when using namespacing
+    ...mapGetters({
+      doubleCounter: types.DOUBLE_COUNTER,
+      stringCounter: types.CLICK_COUNTER
+    })
   }
 };
 </script>

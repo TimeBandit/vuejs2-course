@@ -5,8 +5,8 @@
     <button class="btn btn-primary" @click="decrement(100)">Decrement</button>
     <p>Async Incrementing/Decrementing through the dispatching of actions</p>
     <!-- cant pass more than one argument to an action, instead pass an object -->
-    <button class="btn btn-primary" @click="asyncIncrement">Async Increment</button>
-    <button class="btn btn-primary" @click="asyncDecrement">Async Decrement</button>
+    <button class="btn btn-primary" @click="asyncIncrement(100)">Async Increment</button>
+    <button class="btn btn-primary" @click="asyncDecrement(100)">Async Decrement</button>
   </div>
 </template>
 

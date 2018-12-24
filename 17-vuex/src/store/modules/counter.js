@@ -1,15 +1,22 @@
+import * as types from "../types";
+
 // using modules we split the store into managable chunks
 // this helps make the app scalable
 const state = { counter: 0 };
 
 const getters = {
+	// 👇 namespacing in action
+	[types.DOUBLE_COUNTER]: state => {
+		return state.counter;
+	},
 	doubleCounter: state => {
 		return state.counter * 2;
 	},
-	stringCounter: state => {
+	[types.CLICK_COUNTER]: state => {
 		return state.counter + " Clicks";
 	}
 };
+console.log(getters);
 
 const mutations = {
 	increment: (state, payload) => {
@@ -24,17 +31,17 @@ const actions = {
 	increment: ({ commit }, payload) => {
 		commit("increment", payload);
 	},
-	decrement: ({ commit }, decrement) => {
-		commit("decrement", decrement);
+	decrement: ({ commit }, payload) => {
+		commit("decrement", payload);
 	},
-	asyncIncrement: ({ commit }) => {
+	asyncIncrement: ({ commit }, payload) => {
 		setTimeout(() => {
-			commit("increment");
+			commit("increment", payload);
 		}, 1000);
 	},
-	asyncDecrement: ({ commit }) => {
+	asyncDecrement: ({ commit }, payload) => {
 		setTimeout(() => {
-			commit("decrement");
+			commit("decrement", payload);
 		}, 1000);
 	}
 };
