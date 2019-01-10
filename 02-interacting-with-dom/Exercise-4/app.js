@@ -5,7 +5,9 @@ const vm = new Vue({
 	data: {
 		start: false,
 		timer: null,
-		flip: false
+		flip: false,
+		borderClass: "border",
+		animateClass: "changeColor"
 	},
 	watch: {
 		// *1 using a watch
