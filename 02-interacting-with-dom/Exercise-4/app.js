@@ -1,7 +1,6 @@
 console.log("Yellow... 👋");
 
 const vm = new Vue({
-<<<<<<< HEAD
  el: "#exercise",
  data: {
   start: false,
@@ -67,7 +66,6 @@ const vm = new Vue({
   // 	}
   // }
  }
-=======
 	el: "#exercise",
 	data: {
 		start: false,
@@ -109,7 +107,6 @@ const vm = new Vue({
 		// 	}
 		// }
 	}
->>>>>>> origin/master
 });
 
 console.log(vm);
