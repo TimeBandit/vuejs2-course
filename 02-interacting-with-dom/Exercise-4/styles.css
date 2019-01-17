@@ -35,7 +35,8 @@
 }
 
 .orange {
- color: orange;
+ background-color: orange;
+ color: white;
  width: 100px;
  height: 100px;
  border: 1px solid black;

@@ -20,7 +20,7 @@
  <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
  <div>
   <p>Task 4</p>
-  <input :class="t4aClass" type="text" placeholder="enter class name" v-model="t4aInput" />
+  <input :class="t4aClass" type="text" placeholder="enter red or yellow" v-model="t4aInput" />
   <input
    :class="{orange: isOrange}"
    type="text"
@@ -31,13 +31,20 @@
  </div>
  <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
  <div>
-  <input type="text" />
+  <p>Task 5</p>
+  <input
+   type="text"
+   placeholder="enter a color e.g #bada55 or green"
+   :style="{backgroundColor: task5Input}"
+   v-model="task5Input"
+  />
   <div></div>
  </div>
  <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
  <div>
-  <!-- <button v-on:click="startProgress">Start Progress</button> -->
-  <div></div>
+  <p>Task 6</p>
+  <button @click="startProgress">Start Progress</button>
+  <div :style="styleObject" style="height: 3rem"></div>
  </div>
 </div>
 <script src="https://npmcdn.com/vue/dist/vue.js"></script>
