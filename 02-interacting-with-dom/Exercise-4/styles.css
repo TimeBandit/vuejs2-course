@@ -60,6 +60,11 @@
  animation: example 1.5s alternate-reverse infinite;
 }
 
+.progress {
+ background-color: orangered;
+ transition: all 0.2s;
+}
+
 @keyframes example {
  from {
   background-color: red;

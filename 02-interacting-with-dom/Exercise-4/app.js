@@ -13,7 +13,7 @@ const vm = new Vue({
   t4bInput: "",
   task5Input: "",
   progress: 0,
-  progressStart: false
+  timer: null
  },
  watch: {
   // *1 using a watch
@@ -62,28 +62,18 @@ const vm = new Vue({
     return false;
    }
   }
-  // same as *1 but using a computed property
-  // looks like a watch is the best way in this scenario
-  // timer2: function() {
-  // 	const self = this;
-  // 	if (this.start) {
-  // 		return setInterval(() => {
-  // 			console.log("interval");
-  // 			self.flip = !self.flip;
-  // 		}, 1500);
-  // 	} else {
-  // 		console.log(this.timer2);
-  // 		if (this.timer2) clearInterval(this.timer2);
-  // 		return null;
-  // 	}
-  // }
  },
  methods: {
   startProgress(e) {
-   console.log("Progress started...", e);
-   this.progressStart;
+   console.log("Progress started...");
+   this.timer = setInterval(() => {
+    this.progress += 1;
+   }, 50);
+  }
+ },
+ watch: {
+  progress: function(next, old) {
+   if (next >= 100) clearInterval(this.timer);
   }
  }
 });
-
-console.log(vm);
