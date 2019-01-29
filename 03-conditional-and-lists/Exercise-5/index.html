@@ -24,12 +24,12 @@
  </ul>
  <!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
  <ul>
-  <li v-for="(key, value, index) of testData" :key="index">
-   <span v-if="Array.isArray(value) === false">{{ value }}</span>
+  <div v-for="(val, key, index) of testData" :key="index">
+   <li v-if="Array.isArray(val) === false">{{ val }}</li>
    <span v-else>
-    <span v-for="(arrayitem, index) in value" :key="index">{{ arrayitem }}</span>
+    <li v-for="(arrayitem, index) in val" :key="index">{{ arrayitem }}</li>
    </span>
-  </li>
+  </div>
  </ul>
 </div>
 <script src="./app.js"></script>
