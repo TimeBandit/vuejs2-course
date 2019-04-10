@@ -1,4 +1,4 @@
-# 18-final-projectn
+# 18-final-project
 
 ## Project setup
 ```
