@@ -8,7 +8,7 @@
       <ul class="navbar-nav">
 
         <router-link to="/portfolio" activeClass="active" tag="li"><a>Portfolio</a></router-link>
-        <router-link to="/stocks" activeClass="active" tag="li"><a>Stockss</a></router-link>
+        <router-link to="/stocks" activeClass="active" tag="li"><a>Stocks</a></router-link>
 
 
         <li class="nav-item active">
