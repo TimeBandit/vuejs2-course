@@ -3,7 +3,13 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header/>
-    <router-view></router-view>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
